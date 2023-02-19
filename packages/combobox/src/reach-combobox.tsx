@@ -493,7 +493,7 @@ export const ComboboxInput = React.forwardRef(
 
 		let handleValueChange = React.useCallback(
 			(value: ComboboxValue) => {
-				if (value.trim() === "") {
+				if (value.trim() === "" && !openOnFocus) {
 					transition(CLEAR, { isControlled });
 				} else if (
 					value === initialControlledValue &&
@@ -504,7 +504,7 @@ export const ComboboxInput = React.forwardRef(
 					transition(CHANGE, { value });
 				}
 			},
-			[initialControlledValue, transition, isControlled]
+			[initialControlledValue, transition, isControlled, openOnFocus]
 		);
 
 		React.useEffect(() => {
