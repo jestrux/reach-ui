@@ -1316,7 +1316,7 @@ export function escapeRegexp(str: string) {
  * @see Docs https://reach.tech/combobox#usecomboboxcontext
  */
 export function useComboboxContext(): ComboboxContextValue {
-	let { isExpanded, comboboxId, data, state } =
+	let { isExpanded, comboboxId, data, state, transition } =
 		React.useContext(ComboboxContext);
 	let { navigationValue } = data;
 	return React.useMemo(
@@ -1325,6 +1325,7 @@ export function useComboboxContext(): ComboboxContextValue {
 			isExpanded,
 			navigationValue: navigationValue ?? null,
 			state,
+			transition,
 		}),
 		[comboboxId, isExpanded, navigationValue, state]
 	);
